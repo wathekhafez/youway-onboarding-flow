@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -56,6 +59,15 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        therapy: {
+          purple: "hsl(var(--therapy-purple))",
+          "purple-light": "hsl(var(--therapy-purple-light))",
+          teal: "hsl(var(--therapy-teal))",
+          "teal-light": "hsl(var(--therapy-teal-light))",
+          green: "hsl(var(--therapy-green))",
+          "green-light": "hsl(var(--therapy-green-light))",
+          pink: "hsl(var(--therapy-pink))",
         },
       },
       borderRadius: {
