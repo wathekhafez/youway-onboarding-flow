@@ -1,0 +1,552 @@
+/* Phone Container */
+.phone-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.phone-wrapper {
+  position: relative;
+}
+
+.phone-shadow {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  filter: blur(48px);
+  border-radius: 60px;
+  transform: translateY(16px) scale(0.95);
+}
+
+.phone-body {
+  position: relative;
+  background: linear-gradient(to bottom, #1f2937, #111827);
+  border-radius: 55px;
+  padding: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.phone-bezel {
+  position: relative;
+  background: #000;
+  border-radius: 45px;
+  overflow: hidden;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: #000;
+  width: 128px;
+  height: 32px;
+  border-radius: 0 0 24px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.island-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #374151;
+}
+
+.island-pill {
+  width: 64px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #111827;
+}
+
+/* Phone Screen */
+.phone-screen {
+  width: 320px;
+  height: 680px;
+  background: linear-gradient(to bottom, #f8fafc, #fff);
+  overflow: hidden;
+  position: relative;
+}
+
+.screen-content {
+  position: absolute;
+  inset: 0;
+}
+
+/* Home Indicator */
+.home-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 128px;
+  height: 4px;
+  background: #4b5563;
+  border-radius: 9999px;
+}
+
+/* Side Buttons */
+.side-button {
+  position: absolute;
+  width: 4px;
+  background: #374151;
+}
+
+.side-button-1 {
+  left: 0;
+  top: 128px;
+  height: 32px;
+  border-radius: 9999px 0 0 9999px;
+}
+
+.side-button-2 {
+  left: 0;
+  top: 176px;
+  height: 48px;
+  border-radius: 9999px 0 0 9999px;
+}
+
+.side-button-3 {
+  left: 0;
+  top: 240px;
+  height: 48px;
+  border-radius: 9999px 0 0 9999px;
+}
+
+.side-button-right {
+  right: 0;
+  top: 160px;
+  height: 64px;
+  border-radius: 0 9999px 9999px 0;
+}
+
+/* Screen Base Styles */
+.screen {
+  height: 100%;
+  padding: 56px 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen-1 {
+  background: linear-gradient(to bottom, #faf5ff, #fff, #f0fdfa);
+}
+
+.screen-2 {
+  background: linear-gradient(to bottom, #f0fdfa, #fff, #faf5ff);
+}
+
+.screen-3 {
+  background: linear-gradient(to bottom, #ecfdf5, #fff, #faf5ff);
+}
+
+/* Screen Header */
+.screen-header {
+  text-align: center;
+  margin-bottom: 24px;
+  margin-top: 16px;
+}
+
+.logo-box {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 16px;
+  background: linear-gradient(to bottom right, #a855f7, #9333ea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+}
+
+.logo-text {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.screen-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.screen-subtitle {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+/* Form Fields */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input-icon-purple { color: #c084fc; }
+.input-icon-teal { color: #2dd4bf; }
+.input-icon-green { color: #4ade80; }
+
+.input-field {
+  width: 100%;
+  background: #fff;
+  border: 2px solid;
+  border-radius: 16px;
+  padding: 16px 16px 16px 48px;
+  color: #374151;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.input-field-purple { border-color: #f3e8ff; }
+.input-field-teal { border-color: #ccfbf1; }
+.input-field-green { border-color: #dcfce7; }
+
+/* Button Container */
+.button-container {
+  padding-bottom: 32px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.125rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.submit-button-purple {
+  background: linear-gradient(to right, #a855f7, #9333ea);
+  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+}
+
+.check-icon {
+  color: #fff;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.loading-spinner-wrapper {
+  position: relative;
+}
+
+.loading-spinner {
+  width: 64px;
+  height: 64px;
+  border: 4px solid #99f6e4;
+  border-top-color: #14b8a6;
+  border-radius: 50%;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #14b8a6;
+}
+
+.loading-text {
+  margin-top: 16px;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Therapist List */
+.therapist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.therapist-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.therapist-card-selected {
+  border-color: #14b8a6;
+  box-shadow: 0 4px 6px -1px rgba(20, 184, 166, 0.2);
+}
+
+.therapist-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.therapist-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+.therapist-avatar-0 { background: #c084fc; }
+.therapist-avatar-1 { background: #2dd4bf; }
+.therapist-avatar-2 { background: #4ade80; }
+
+.therapist-info {
+  flex: 1;
+}
+
+.therapist-name {
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.therapist-specialty {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.heart-icon {
+  color: #ec4899;
+  fill: #ec4899;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #2dd4bf;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+}
+
+/* Success Message */
+.success-message {
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+.success-message-teal {
+  background: linear-gradient(to right, #14b8a6, #0d9488);
+  box-shadow: 0 10px 15px -3px rgba(20, 184, 166, 0.3);
+}
+
+.success-message-green {
+  background: linear-gradient(to right, #22c55e, #10b981);
+  box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.3);
+}
+
+.success-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-check-icon {
+  color: #14b8a6;
+}
+
+.success-check-green {
+  color: #22c55e;
+}
+
+.success-text {
+  font-weight: 600;
+  margin: 0;
+}
+
+.success-subtext {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 4px 0 0;
+}
+
+/* Options Container */
+.options-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.options-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.option-wrapper {
+  position: relative;
+}
+
+.option-box {
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.option-purple {
+  background: linear-gradient(to bottom right, #c084fc, #a855f7);
+}
+
+.option-teal {
+  background: linear-gradient(to bottom right, #2dd4bf, #14b8a6);
+}
+
+.option-green {
+  background: linear-gradient(to bottom right, #4ade80, #22c55e);
+}
+
+.option-icon {
+  color: #fff;
+}
+
+.option-label {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.ripple-effect {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  border: 2px solid #fff;
+}
+
+.selection-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Signal Animation */
+.signal-container {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signal-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signal-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #4ade80;
+}
+
+.signal-center {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(to bottom right, #4ade80, #22c55e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Typewriter */
+.typewriter-container {
+  display: flex;
+  align-items: center;
+}
+
+.placeholder-text {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.cursor {
+  margin-left: 2px;
+  width: 2px;
+  height: 20px;
+  background: #a855f7;
+  display: inline-block;
+}
+
+/* Password Dots */
+.password-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+}
+
+.password-dot {
+  width: 8px;
+  height: 8px;
+  background: #374151;
+  border-radius: 50%;
+}
