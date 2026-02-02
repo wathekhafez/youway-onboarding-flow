@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Phone, Video, Check, Heart, User, Mail, Lock, Search } from 'lucide-react';
+import './PhoneMockup.css';
 
 const PhoneMockup: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState(0);
@@ -12,7 +13,6 @@ const PhoneMockup: React.FC = () => {
 
     const timer = setTimeout(() => {
       if (currentScreen === 2) {
-        // Pause before looping
         setTimeout(() => {
           setCurrentScreen(0);
           setScreenKey(prev => prev + 1);
@@ -32,24 +32,18 @@ const PhoneMockup: React.FC = () => {
   ];
 
   return (
-    <div className="flex items-center justify-center p-8">
-      {/* Phone Frame */}
-      <div className="relative">
-        {/* Phone Shadow */}
-        <div className="absolute inset-0 bg-black/20 blur-3xl rounded-[60px] transform translate-y-4 scale-95" />
+    <div className="phone-container">
+      <div className="phone-wrapper">
+        <div className="phone-shadow" />
         
-        {/* Phone Body */}
-        <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-[55px] p-3 shadow-2xl">
-          {/* Phone Bezel */}
-          <div className="relative bg-black rounded-[45px] overflow-hidden">
-            {/* Dynamic Island / Notch */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 bg-black w-32 h-8 rounded-b-3xl flex items-center justify-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-gray-700" />
-              <div className="w-16 h-4 rounded-full bg-gray-900" />
+        <div className="phone-body">
+          <div className="phone-bezel">
+            <div className="dynamic-island">
+              <div className="island-dot" />
+              <div className="island-pill" />
             </div>
 
-            {/* Screen Container */}
-            <div className="w-[320px] h-[680px] bg-gradient-to-b from-slate-50 to-white overflow-hidden relative">
+            <div className="phone-screen">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`${currentScreen}-${screenKey}`}
@@ -57,29 +51,26 @@ const PhoneMockup: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -50 }}
                   transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                  className="absolute inset-0"
+                  className="screen-content"
                 >
                   {screens[currentScreen]}
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Home Indicator */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-600 rounded-full" />
+            <div className="home-indicator" />
           </div>
         </div>
 
-        {/* Side Buttons */}
-        <div className="absolute left-0 top-32 w-1 h-8 bg-gray-700 rounded-l-full" />
-        <div className="absolute left-0 top-44 w-1 h-12 bg-gray-700 rounded-l-full" />
-        <div className="absolute left-0 top-60 w-1 h-12 bg-gray-700 rounded-l-full" />
-        <div className="absolute right-0 top-40 w-1 h-16 bg-gray-700 rounded-r-full" />
+        <div className="side-button side-button-1" />
+        <div className="side-button side-button-2" />
+        <div className="side-button side-button-3" />
+        <div className="side-button side-button-right" />
       </div>
     </div>
   );
 };
 
-// Screen 1: Create Account
 const Screen1: React.FC = () => {
   const [step, setStep] = useState(0);
 
@@ -95,70 +86,64 @@ const Screen1: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-full bg-gradient-to-b from-purple-50 via-white to-teal-50 pt-14 px-6 flex flex-col">
-      {/* Header */}
+    <div className="screen screen-1">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-center mb-8 mt-4"
+        className="screen-header"
       >
-        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-200">
-          <span className="text-white text-2xl font-bold">Y</span>
+        <div className="logo-box">
+          <span className="logo-text">Y</span>
         </div>
-        <h1 className="text-2xl font-bold text-gray-800">Hesap Oluştur</h1>
-        <p className="text-gray-500 text-sm mt-1">Terapi yolculuğun başlasın</p>
+        <h1 className="screen-title">Hesap Oluştur</h1>
+        <p className="screen-subtitle">Terapi yolculuğun başlasın</p>
       </motion.div>
 
-      {/* Form Fields */}
-      <div className="space-y-4 flex-1">
-        {/* Name Field */}
+      <div className="form-fields">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: step >= 1 ? 1 : 0, x: step >= 1 ? 0 : -20 }}
-          className="relative"
+          className="input-wrapper"
         >
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400">
+          <div className="input-icon input-icon-purple">
             <User size={18} />
           </div>
-          <div className="w-full bg-white border-2 border-purple-100 rounded-2xl pl-12 pr-4 py-4 text-gray-700 shadow-sm">
+          <div className="input-field input-field-purple">
             <TypewriterText text="Ayşe Yılmaz" show={step >= 2} />
           </div>
         </motion.div>
 
-        {/* Email Field */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: step >= 2 ? 1 : 0, x: step >= 2 ? 0 : -20 }}
           transition={{ delay: 0.1 }}
-          className="relative"
+          className="input-wrapper"
         >
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-teal-400">
+          <div className="input-icon input-icon-teal">
             <Mail size={18} />
           </div>
-          <div className="w-full bg-white border-2 border-teal-100 rounded-2xl pl-12 pr-4 py-4 text-gray-700 shadow-sm">
+          <div className="input-field input-field-teal">
             <TypewriterText text="ayse@email.com" show={step >= 3} delay={0.8} />
           </div>
         </motion.div>
 
-        {/* Password Field */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: step >= 3 ? 1 : 0, x: step >= 3 ? 0 : -20 }}
           transition={{ delay: 0.2 }}
-          className="relative"
+          className="input-wrapper"
         >
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-green-400">
+          <div className="input-icon input-icon-green">
             <Lock size={18} />
           </div>
-          <div className="w-full bg-white border-2 border-green-100 rounded-2xl pl-12 pr-4 py-4 text-gray-700 shadow-sm">
+          <div className="input-field input-field-green">
             <PasswordDots show={step >= 4} />
           </div>
         </motion.div>
       </div>
 
-      {/* Submit Button */}
-      <motion.div className="pb-8">
+      <motion.div className="button-container">
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ 
@@ -167,7 +152,7 @@ const Screen1: React.FC = () => {
             scale: step >= 5 ? [1, 0.95, 1] : 1
           }}
           transition={{ duration: 0.3 }}
-          className="w-full py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold text-lg shadow-lg shadow-purple-200 flex items-center justify-center gap-2"
+          className="submit-button submit-button-purple"
         >
           {step >= 5 ? (
             <motion.div
@@ -175,7 +160,7 @@ const Screen1: React.FC = () => {
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             >
-              <Check size={24} className="text-white" />
+              <Check size={24} className="check-icon" />
             </motion.div>
           ) : (
             "Kayıt Ol"
@@ -186,7 +171,6 @@ const Screen1: React.FC = () => {
   );
 };
 
-// Screen 2: Match with Therapist
 const Screen2: React.FC = () => {
   const [step, setStep] = useState(0);
 
@@ -208,41 +192,38 @@ const Screen2: React.FC = () => {
   ];
 
   return (
-    <div className="h-full bg-gradient-to-b from-teal-50 via-white to-purple-50 pt-14 px-6 flex flex-col">
-      {/* Header */}
+    <div className="screen screen-2">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="text-center mb-6 mt-4"
+        className="screen-header"
       >
-        <h1 className="text-2xl font-bold text-gray-800">Terapistini Bul</h1>
-        <p className="text-gray-500 text-sm mt-1">Sana uygun terapisti eşleştiriyoruz</p>
+        <h1 className="screen-title">Terapistini Bul</h1>
+        <p className="screen-subtitle">Sana uygun terapisti eşleştiriyoruz</p>
       </motion.div>
 
-      {/* Loading Animation */}
       <AnimatePresence>
         {step < 2 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="flex flex-col items-center justify-center py-8"
+            className="loading-container"
           >
-            <div className="relative">
+            <div className="loading-spinner-wrapper">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                className="w-16 h-16 border-4 border-teal-200 border-t-teal-500 rounded-full"
+                className="loading-spinner"
               />
-              <Search className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-teal-500" size={24} />
+              <Search className="search-icon" size={24} />
             </div>
-            <p className="mt-4 text-gray-500 text-sm">Aranıyor...</p>
+            <p className="loading-text">Aranıyor...</p>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Therapist Cards */}
-      <div className="space-y-3 flex-1">
+      <div className="therapist-list">
         {step >= 2 && therapists.map((therapist, index) => (
           <motion.div
             key={therapist.name}
@@ -251,37 +232,30 @@ const Screen2: React.FC = () => {
               opacity: 1, 
               x: 0,
               scale: step >= 4 && index === 1 ? 1.02 : 1,
-              borderColor: step >= 4 && index === 1 ? "rgb(20, 184, 166)" : "transparent"
             }}
             transition={{ delay: index * 0.15, duration: 0.4 }}
-            className={`bg-white rounded-2xl p-4 shadow-md border-2 transition-all relative overflow-hidden ${
-              step >= 4 && index === 1 ? "shadow-teal-100" : ""
-            }`}
+            className={`therapist-card ${step >= 4 && index === 1 ? 'therapist-card-selected' : ''}`}
           >
-            <div className="flex items-center gap-3">
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${
-                index === 0 ? "bg-purple-400" : index === 1 ? "bg-teal-400" : "bg-green-400"
-              }`}>
+            <div className="therapist-content">
+              <div className={`therapist-avatar therapist-avatar-${index}`}>
                 {therapist.avatar}
               </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-gray-800">{therapist.name}</h3>
-                <p className="text-sm text-gray-500">{therapist.specialty}</p>
+              <div className="therapist-info">
+                <h3 className="therapist-name">{therapist.name}</h3>
+                <p className="therapist-specialty">{therapist.specialty}</p>
               </div>
               
-              {/* Heart Animation */}
               {step >= 4 && index === 1 && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: [0, 1.2, 1] }}
                   transition={{ duration: 0.4 }}
                 >
-                  <Heart className="text-pink-500 fill-pink-500" size={24} />
+                  <Heart className="heart-icon" size={24} />
                 </motion.div>
               )}
             </div>
 
-            {/* Connection Particles */}
             {step >= 4 && index === 1 && (
               <>
                 {[...Array(6)].map((_, i) => (
@@ -295,8 +269,7 @@ const Screen2: React.FC = () => {
                       y: [0, (Math.random() - 0.5) * 60]
                     }}
                     transition={{ duration: 1, delay: 0.3 + i * 0.1 }}
-                    className="absolute w-2 h-2 bg-teal-400 rounded-full"
-                    style={{ left: "50%", top: "50%" }}
+                    className="particle"
                   />
                 ))}
               </>
@@ -305,24 +278,23 @@ const Screen2: React.FC = () => {
         ))}
       </div>
 
-      {/* Match Complete Message */}
       <AnimatePresence>
         {step >= 5 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="pb-8"
+            className="button-container"
           >
-            <div className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-2xl p-4 text-center text-white shadow-lg shadow-teal-200">
+            <div className="success-message success-message-teal">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 500 }}
-                className="w-10 h-10 bg-white rounded-full mx-auto mb-2 flex items-center justify-center"
+                className="success-icon-wrapper"
               >
-                <Check className="text-teal-500" size={24} />
+                <Check className="success-check-icon" size={24} />
               </motion.div>
-              <p className="font-semibold">Eşleşme Tamamlandı!</p>
+              <p className="success-text">Eşleşme Tamamlandı!</p>
             </div>
           </motion.div>
         )}
@@ -331,7 +303,6 @@ const Screen2: React.FC = () => {
   );
 };
 
-// Screen 3: Connect Instantly
 const Screen3: React.FC = () => {
   const [step, setStep] = useState(0);
 
@@ -348,26 +319,24 @@ const Screen3: React.FC = () => {
   }, []);
 
   const options = [
-    { icon: MessageCircle, label: "Mesaj", color: "from-purple-400 to-purple-500" },
-    { icon: Phone, label: "Sesli Arama", color: "from-teal-400 to-teal-500" },
-    { icon: Video, label: "Görüntülü", color: "from-green-400 to-green-500" },
+    { icon: MessageCircle, label: "Mesaj", colorClass: "option-purple" },
+    { icon: Phone, label: "Sesli Arama", colorClass: "option-teal" },
+    { icon: Video, label: "Görüntülü", colorClass: "option-green" },
   ];
 
   return (
-    <div className="h-full bg-gradient-to-b from-green-50 via-white to-purple-50 pt-14 px-6 flex flex-col">
-      {/* Header */}
+    <div className="screen screen-3">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="text-center mb-8 mt-4"
+        className="screen-header"
       >
-        <h1 className="text-2xl font-bold text-gray-800">İletişim Yöntemini Seç</h1>
-        <p className="text-gray-500 text-sm mt-1">Terapistinle nasıl bağlanmak istersin?</p>
+        <h1 className="screen-title">İletişim Yöntemini Seç</h1>
+        <p className="screen-subtitle">Terapistinle nasıl bağlanmak istersin?</p>
       </motion.div>
 
-      {/* Communication Options */}
-      <div className="flex-1 flex flex-col items-center justify-center gap-6">
-        <div className="flex gap-4 justify-center">
+      <div className="options-container">
+        <div className="options-row">
           {options.map((option, index) => (
             <motion.div
               key={option.label}
@@ -383,51 +352,47 @@ const Screen3: React.FC = () => {
                 damping: 25,
                 delay: index * 0.15
               }}
-              className="relative"
+              className="option-wrapper"
             >
-              <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${option.color} flex items-center justify-center shadow-lg relative overflow-hidden`}>
-                <option.icon size={32} className="text-white" />
+              <div className={`option-box ${option.colorClass}`}>
+                <option.icon size={32} className="option-icon" />
                 
-                {/* Ripple Effect */}
                 {step >= 4 && (
                   <>
                     <motion.div
                       animate={{ scale: [1, 2], opacity: [0.5, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
-                      className="absolute inset-0 rounded-3xl border-2 border-white"
+                      className="ripple-effect"
                     />
                     <motion.div
                       animate={{ scale: [1, 2.5], opacity: [0.3, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
-                      className="absolute inset-0 rounded-3xl border-2 border-white"
+                      className="ripple-effect"
                     />
                   </>
                 )}
 
-                {/* Selection Glow */}
                 {step >= 5 && index === 2 && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 1, repeat: Infinity }}
-                    className="absolute inset-0 rounded-3xl bg-white/30"
+                    className="selection-glow"
                   />
                 )}
               </div>
-              <p className="text-center mt-2 text-sm font-medium text-gray-600">{option.label}</p>
+              <p className="option-label">{option.label}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Connection Animation */}
         {step >= 5 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-8 flex flex-col items-center"
+            className="signal-container"
           >
-            {/* Signal Waves */}
-            <div className="relative w-24 h-24 flex items-center justify-center">
+            <div className="signal-wrapper">
               {[...Array(3)].map((_, i) => (
                 <motion.div
                   key={i}
@@ -441,40 +406,39 @@ const Screen3: React.FC = () => {
                     repeat: Infinity,
                     delay: i * 0.4
                   }}
-                  className="absolute w-full h-full rounded-full border-2 border-green-400"
+                  className="signal-ring"
                 />
               ))}
               <motion.div
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 0.5, repeat: Infinity }}
-                className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center shadow-lg"
+                className="signal-center"
               >
-                <Video size={24} className="text-white" />
+                <Video size={24} className="option-icon" />
               </motion.div>
             </div>
           </motion.div>
         )}
       </div>
 
-      {/* Success Message */}
       <AnimatePresence>
         {step >= 6 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="pb-8"
+            className="button-container"
           >
-            <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-4 text-center text-white shadow-lg shadow-green-200">
+            <div className="success-message success-message-green">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 500 }}
-                className="w-10 h-10 bg-white rounded-full mx-auto mb-2 flex items-center justify-center"
+                className="success-icon-wrapper success-icon-wrapper-green"
               >
-                <Check className="text-green-500" size={24} />
+                <Check className="success-check-icon success-check-green" size={24} />
               </motion.div>
-              <p className="font-semibold">Bağlandı!</p>
-              <p className="text-sm text-green-100">Terapistiniz sizi bekliyor</p>
+              <p className="success-text">Bağlandı!</p>
+              <p className="success-subtext">Terapistiniz sizi bekliyor</p>
             </div>
           </motion.div>
         )}
@@ -483,7 +447,6 @@ const Screen3: React.FC = () => {
   );
 };
 
-// Typewriter Text Component
 const TypewriterText: React.FC<{ text: string; show: boolean; delay?: number }> = ({ text, show, delay = 0 }) => {
   const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
@@ -512,20 +475,19 @@ const TypewriterText: React.FC<{ text: string; show: boolean; delay?: number }> 
   }, [show, text, delay]);
 
   return (
-    <span className="flex items-center">
-      {displayText || <span className="text-gray-400 text-sm">Adınız</span>}
+    <span className="typewriter-container">
+      {displayText || <span className="placeholder-text">Adınız</span>}
       {show && showCursor && (
         <motion.span
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 0.8, repeat: Infinity }}
-          className="ml-0.5 w-0.5 h-5 bg-purple-500 inline-block"
+          className="cursor"
         />
       )}
     </span>
   );
 };
 
-// Password Dots Component
 const PasswordDots: React.FC<{ show: boolean }> = ({ show }) => {
   const [dots, setDots] = useState(0);
 
@@ -543,18 +505,18 @@ const PasswordDots: React.FC<{ show: boolean }> = ({ show }) => {
   }, [show]);
 
   return (
-    <div className="flex items-center gap-1 h-5">
+    <div className="password-dots">
       {dots > 0 ? (
         [...Array(dots)].map((_, i) => (
           <motion.span
             key={i}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="w-2 h-2 bg-gray-700 rounded-full"
+            className="password-dot"
           />
         ))
       ) : (
-        <span className="text-gray-400 text-sm">Şifreniz</span>
+        <span className="placeholder-text">Şifreniz</span>
       )}
     </div>
   );
